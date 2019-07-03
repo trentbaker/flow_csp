@@ -1,5 +1,6 @@
 # intelliJ files
 *.iml
+.idea/
 
 # generated files
 out/

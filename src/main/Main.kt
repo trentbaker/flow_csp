@@ -20,6 +20,7 @@ fun main(args: Array<String>) {
         }
     }
 
+
     val startTime = System.currentTimeMillis()
     File(PUZZLE_PATH).walk().forEach { file ->
         //        only try to import text files
