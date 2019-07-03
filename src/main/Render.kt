@@ -1,8 +1,14 @@
+import java.awt.Image
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
-fun renderMaze(maze: MutableList<MutableList<Node>>, outputFilename: String = "res/output/output.png") {
+fun renderMaze(
+    maze: MutableList<MutableList<Node>>,
+    outputFilename: String = "src/res/images/test.png",
+    imageWidth: Int = 100,
+    imageHeight: Int = 100
+) {
     if (maze.size == 0) {
         error("Passed an empty maze")
     }
@@ -30,13 +36,12 @@ fun renderMaze(maze: MutableList<MutableList<Node>>, outputFilename: String = "r
             }
         }
     }
-    var out = File(outputFilename)
-    ImageIO.write(image, "png", out)
-    println("render finished: ${System.currentTimeMillis() - startTime}ms")
-}
 
-fun BufferedImage.scaleTo(width: Int, height: Int) {
-    var temp = BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)
-//    width/this.width
-//    temp.se
+    ImageIO.write(
+        BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB).also {
+            it.graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_FAST), 0, 0, null)
+        }, "png", File(outputFilename)
+    )
+
+    println("render finished: ${System.currentTimeMillis() - startTime}ms")
 }
