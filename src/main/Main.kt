@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
             backtrack.assignments = 0
             var currentMaze = Maze(file.path).nodes
 //            render input state
-            renderMaze(currentMaze,
+            renderMaze(currentMaze).save(
                 "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_input.png")
 //            find solution
             val time = measureTimeMillis {
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
 
             println("... using ${backtrack.assignments} assignments")
 //            render solution
-            renderMaze(currentMaze,
+            renderMaze(currentMaze).save(
                 "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_output.png")
         }
     }
