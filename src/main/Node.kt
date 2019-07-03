@@ -9,16 +9,10 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
     var domain = mutableListOf(type)
     val source = type != '_' && type != '?'
 
-    @Deprecated(message = "Functionality moved into Import.kt")
-    fun assignNeighbors(northNode: Node, eastNode: Node, southNode: Node, westNode: Node) {
-        this.north = northNode
-        this.east = eastNode
-        this.south = southNode
-        this.west = westNode
-    }
-
-    //    constrainValue is 0-4 representing how many of north, east, south, west are blocked
-//    use (4 - constrainValue) for how many of north, east, south, west are open
+    /*
+     * constrainValue is 0-4 representing how many of north, east, south, west are blocked
+     * use (4 - constrainValue) for how many of north, east, south, west are open
+     */
     fun calculateConstrain() {
         if (this.type == '?') return
         this.constrainValue = 0
