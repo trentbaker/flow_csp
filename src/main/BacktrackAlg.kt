@@ -1,10 +1,10 @@
 interface BacktrackAlg {
 
     // Tracks number of assignments made
-    var assignments : Int
+    var assignments: Int
 
     // Tracks if algorithm is smart for conditionally executing code
-    val smart : Boolean
+    val smart: Boolean
 
     /*
     This function is implemented to select in different ways to vary algorithm behavior
@@ -35,13 +35,13 @@ interface BacktrackAlg {
             assignments++
             node.type = value
 
-            if(smart){
+            if (smart) {
                 node.neighbors.forEach { node -> node.calculateConstrain() }
             }
 
 //            consistent is true if there are no constraint violations among neighbors
             val consistent = node.neighbors.filter { neighbor -> neighbor.type != '?' }
-                    .all { neighbor -> neighbor.validateConstraints() }
+                .all { neighbor -> neighbor.validateConstraints() }
 
 //            if the current assignment is consistent with the constraints, continue assigning
             if (consistent) {

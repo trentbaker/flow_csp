@@ -1,7 +1,8 @@
 import java.io.File
-class Maze(fileName : String){
 
-    val domain : MutableSet<Char> = mutableSetOf()
+class Maze(fileName: String) {
+
+    val domain: MutableSet<Char> = mutableSetOf()
     val nodes = importMaze(fileName)
 
     /*
@@ -50,7 +51,7 @@ class Maze(fileName : String){
                     maze[i][j].north = maze[i - 1][j]
                 }
                 maze[i][j].calculateConstrain()
-                if(maze[i][j].type == '_') {
+                if (maze[i][j].type == '_') {
                     maze[i][j].domain = domain.toMutableList()
                 }
             }

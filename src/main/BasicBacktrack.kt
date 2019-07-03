@@ -12,7 +12,7 @@ class BasicBacktrack : BacktrackAlg {
      */
     override fun selectUnassignedVariable(maze: MutableList<MutableList<Node>>): Node {
         var temp = maze.flatten()
-                .filter { node -> node.type == '_' }
+            .filter { node -> node.type == '_' }
         return temp.first()
     }
 }

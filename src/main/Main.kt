@@ -7,15 +7,15 @@ var OUTPUT_PATH = "src/res/images/"
 
 
 fun main(args: Array<String>) {
-    var backtrack : BacktrackAlg = SmartBacktrack()
-    if (args.count() > 0){
+    var backtrack: BacktrackAlg = SmartBacktrack()
+    if (args.count() > 0) {
         PUZZLE_PATH = args[0]
     }
-    if(args.count() > 1){
+    if (args.count() > 1) {
         OUTPUT_PATH = args[1]
     }
-    if (args.count() > 2){
-        if (args[2].toLowerCase().equals("true")){
+    if (args.count() > 2) {
+        if (args[2].toLowerCase().equals("true")) {
             backtrack = BasicBacktrack()
         }
     }
@@ -29,7 +29,7 @@ fun main(args: Array<String>) {
             var currentMaze = Maze(file.path).nodes
 //            render input state
             renderMaze(currentMaze,
-                    "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_input.png")
+                "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_input.png")
 //            find solution
             val time = measureTimeMillis {
                 backtrack.search(currentMaze)
@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
             println("... using ${backtrack.assignments} assignments")
 //            render solution
             renderMaze(currentMaze,
-                    "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_output.png")
+                "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_output.png")
         }
     }
     println("Solved $PUZZLE_PATH in ${System.currentTimeMillis() - startTime}ms\n")

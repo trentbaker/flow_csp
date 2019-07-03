@@ -17,7 +17,7 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
         this.west = westNode
     }
 
-//    constrainValue is 0-4 representing how many of north, east, south, west are blocked
+    //    constrainValue is 0-4 representing how many of north, east, south, west are blocked
 //    use (4 - constrainValue) for how many of north, east, south, west are open
     fun calculateConstrain() {
         if (this.type == '?') return
@@ -28,24 +28,20 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
     /*
         Returns true if constraints are held, false otherwise
      */
-    fun validateConstraints() : Boolean
-    {
+    fun validateConstraints(): Boolean {
         // Ignore unassigned constraints
-        if (this.type == '_')
-        {
+        if (this.type == '_') {
             return true
         }
         val unassigned = this.neighbors.count { node -> node.type == '_' }
-        val matchingAssigned = this.neighbors.count{node -> node.type == this.type}
+        val matchingAssigned = this.neighbors.count { node -> node.type == this.type }
 
         // Validate there aren't more of a color neighboring current node than valid
-        if(this.source && matchingAssigned > 1 || matchingAssigned > 2)
-        {
+        if (this.source && matchingAssigned > 1 || matchingAssigned > 2) {
             return false
         }
         // Validate that there can be enough neighbors of the current node to be valid
-        if(this.source && (matchingAssigned + unassigned) < 1 || !this.source && (matchingAssigned + unassigned) < 2)
-        {
+        if (this.source && (matchingAssigned + unassigned) < 1 || !this.source && (matchingAssigned + unassigned) < 2) {
             return false
         }
         return true

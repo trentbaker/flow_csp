@@ -13,8 +13,8 @@ class SmartBacktrack : BacktrackAlg {
      */
     override fun selectUnassignedVariable(maze: MutableList<MutableList<Node>>): Node {
         var temp = maze.flatten()
-                .filter { node -> node.type == '_' }
-                .sortedByDescending { node -> node.constrainValue }
+            .filter { node -> node.type == '_' }
+            .sortedByDescending { node -> node.constrainValue }
         return temp.first()
     }
 }
